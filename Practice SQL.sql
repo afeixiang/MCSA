@@ -129,7 +129,17 @@ AS t2
 
 
 
-active user count for each role and the total active user count.
+active user count for each role
+ and the total active user count.
 ordered by active user count of each role.
 CTEs
 
+SELECT RoleID, count(UserID) AS ActiveUserCount
+FROM
+tblUsersInRoles LEFT JOIN tblUsers
+where tblUsers.IsActive = 1
+GROUP BY tblUsersInRoles
+
+
+------------------------------------------------------------
+WITH Acit
